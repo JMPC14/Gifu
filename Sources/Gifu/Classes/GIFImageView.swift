@@ -15,6 +15,11 @@ public class GIFImageView: UIImageView, GIFAnimatable {
     if UIImageView.instancesRespond(to: #selector(display(_:))) {
         super.display(layer)
     }
+    guard let image = self.activeFrame else {
+                return
+            }
+            layer.contentsScale = image.scale
+            layer.contents = image.cgImage
     updateImageIfNeeded()
   }
 }
